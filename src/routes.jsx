@@ -5,13 +5,18 @@ import Products from "./pages/Producs";
 const routes = [
   {
     path: "/",
-    element: <Home />,
+    element: <App />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "products",
+        element: <Products />,
+      },
+    ],
   },
-  {
-    path: "products",
-    element: <Products />,
-  }
 ];
 
-
-export default routes
+export default routes;
