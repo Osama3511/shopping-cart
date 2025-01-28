@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
-function Header() {
+import PropTypes from "prop-types";
+import getProductAmount from "../scripts/getProductAmount";
+function Header({ products }) {
+  const productAmount = getProductAmount(products);
   return (
     <header>
       <nav>
@@ -14,12 +17,16 @@ function Header() {
             <Link to="products">Products</Link>
           </li>
           <li>
-            <Link to="cart">Cart</Link>
+            <Link to="cart">Cart {productAmount}</Link>
           </li>
         </ul>
       </nav>
     </header>
   );
 }
+
+Header.propTypes = {
+  products: PropTypes.array,
+};
 
 export default Header;

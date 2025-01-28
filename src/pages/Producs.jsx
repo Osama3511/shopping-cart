@@ -1,5 +1,7 @@
 import Card from "../components/Card.jsx";
 import { useState, useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
+
 function useProductUrls() {
   const [productUrls, setproductUrls] = useState(null);
   const [error, setError] = useState(null);
@@ -32,6 +34,7 @@ function useProductUrls() {
 
 function Products() {
   const { productUrls, error, loading } = useProductUrls();
+  const { setProducts } = useOutletContext();
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>A network error was encountered</p>;
@@ -41,12 +44,7 @@ function Products() {
       <section style={{ display: "flex", gap: "16px" }}>
         {productUrls.map((product) => {
           return (
-            <Card
-              key={product.title}
-              src={product.image}
-              title={product.title}
-              price={product.price}
-            />
+            <Card key={product.title} product={product} onClick={setProducts} />
           );
         })}
       </section>
