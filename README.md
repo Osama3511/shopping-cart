@@ -2,6 +2,8 @@
 
 tools I learned in this project: state, side-effects, fetching data in react, react-router and the awsome fakestore api!
 
+# live preview - https://fakeshoppingcartdodo.netlify.app/
+
 # React + Vite
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
