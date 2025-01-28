@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import updateProductsAmount from "../scripts/updateProductAmount";
+import "../styles/cartProduct.css";
 
 function CartProduct({ product, onClick }) {
   const { image, title, price, amount } = product;
@@ -33,16 +34,26 @@ function CartProduct({ product, onClick }) {
   };
 
   return (
-    <div>
-      <img src={image} alt={title} width={"100px"} height={"100px"} />
-      <p>{title}</p>
-      <p>{price}</p>
-      <div>
-        <button onClick={handleDecrease}>-</button>
-        <p>{amount}</p>
-        <button onClick={handleIncrease}>+</button>
+    <div className="card">
+      <img src={image} alt={title} className="card-image" />
+      <div className="card-details">
+        <div className="card-info">
+          <p className="card-title">{title}</p>
+          <p className="card-price">${price}</p>
+        </div>
+        <div className="card-actions">
+          <button className="card-button" onClick={handleDecrease}>
+            -
+          </button>
+          <p className="card-amount">{amount}</p>
+          <button className="card-button" onClick={handleIncrease}>
+            +
+          </button>
+          <button className="card-delete" onClick={handleDelete}>
+            Delete
+          </button>
+        </div>
       </div>
-      <button onClick={handleDelete}>delete</button>
     </div>
   );
 }

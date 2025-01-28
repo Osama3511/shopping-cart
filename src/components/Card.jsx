@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import updateProductsAmount from "../scripts/updateProductAmount";
+import "../styles/card.css"
 
 function Card({ product, onClick }) {
   const [inputVal, setInputVal] = useState(1);
@@ -40,27 +41,30 @@ function Card({ product, onClick }) {
     setInputVal(e.target.value);
   };
 
-  const imgStyle = {
-    width: "100px",
-    height: "100px",
-  };
 
   return (
-    <div>
-      <img style={imgStyle} src={image} alt={title} />
-      <span>{title}</span>
-      <p>{price}</p>
-      <div>
-        <button onClick={handleDecrease}>-</button>
+    <div className="product-card">
+      <img className="product-image" src={image} alt={title} />
+      <span className="product-title">{title}</span>
+      <p className="product-price">${price}</p>
+      <div className="quantity-container">
+        <button className="quantity-button" onClick={handleDecrease}>
+          -
+        </button>
         <input
+          className="quantity-input"
           type="number"
           onChange={(e) => handleChange(e)}
           value={inputVal}
           name="amount"
         />
-        <button onClick={handleIncrease}>+</button>
+        <button className="quantity-button" onClick={handleIncrease}>
+          +
+        </button>
       </div>
-      <button onClick={handleAddToCart}>Add to cart</button>
+      <button className="add-to-cart-button" onClick={handleAddToCart}>
+        Add to Cart
+      </button>
     </div>
   );
 }
